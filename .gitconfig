@@ -1,0 +1,7 @@
+[user]
+	name = James Eckersall
+	email = james.eckersall@fasthosts.com
+[push]
+	default = current
+[color]
+	ui = true
