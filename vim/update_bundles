@@ -17,6 +17,8 @@ git_bundles = [
   "https://github.com/tpope/vim-fugitive.git",
   "https://github.com/JamshedVesuna/vim-markdown-preview.git",
   "https://github.com/fatih/vim-go.git",
+  "https://github.com/godlygeek/tabular",
+  "https://github.com/hashivim/vim-terraform",
 ]
 
 vim_org_scripts = [

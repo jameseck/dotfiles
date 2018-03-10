@@ -7,14 +7,16 @@ set tabstop=4
 
 set paste
 
+set nocompatible
+set expandtab
+set smarttab
+" filetype indent plugin on
+
 " highlight trailing whitespace
 match ErrorMsg '\s\+$'
 
 " remove trailing whitespace
 nnoremap <Leader>rtw :%s/\s\+$//e<CR>
-
-" toggle indentlines
-nnoremap <Leader>il :IndentLinesToggle<CR>
 
 let g:syntastic_eruby_ruby_quiet_messages =
     \ {'regex': 'possibly useless use of a variable in void context'}
