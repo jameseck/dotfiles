@@ -1,7 +1,7 @@
 #!/bin/sh
 
 VERSION="0.8.1"
-PATCHES="https://st.suckless.org/patches/scrollback/st-scrollback-0.8.diff"
+PATCHES="https://st.suckless.org/patches/scrollback/st-scrollback-0.8.diff http://st.suckless.org/patches/clipboard/st-clipboard-0.8.1.diff"
 
 docker run \
   -it \
