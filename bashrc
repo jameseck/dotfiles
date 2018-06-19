@@ -37,13 +37,11 @@ PS1="${GREEN}\u@\h${GREY}:${BOLD}${CYAN}\$([ -f ~/.rvm/bin/rvm-prompt ] && ~/.rv
 #PS1="\[\033[01;34m\]\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;31m\]\$(parse_os_login)\[\033[00m\]:\$([ -f ~/.rvm/bin/rvm-prompt ] && ~/.rvm/bin/rvm-prompt) \[\033[01;36m\]\$(type __git_ps1 2>/dev/null| head -1 | grep -q '__git_ps1 is a function' &&__git_ps1 \" (%s)\") \n\[\033[00;36m\]\w\[\033[00;0m\]\n\$\[\033[00m\] "
 export PS1
 
-export NOCHOP=james.eckersall@10.44.255.186
-export DEVHOP=james.eckersall@10.44.249.4
-
 alias copsi="cops -bp"
 alias copsx="cops -X1"
 alias copsx2="cops -X2"
 alias copsgex="cops get -e -X1"
+alias ls="ls --color"
 
 [ -f ~/cops_completion.sh ] && \
 source ~/cops_completion.sh
@@ -65,3 +63,6 @@ alias rppj="ruby -e \"require 'json'; puts (JSON.pretty_generate JSON.parse(STDI
 alias os="openstack"
 
 export ANSIBLE_NOCOWS=1
+
+# Add ~/bin to PATH if not already there
+echo $PATH | tr ":" "\n" | grep ^~/bin$ || export PATH="~/bin:$PATH"

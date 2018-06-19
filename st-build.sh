@@ -7,6 +7,7 @@ docker run \
   -it \
   -w /tmp \
   -v "${HOME}/bin/:/output_bin_dir:Z" \
+  -v "$(pwd)/st-patches:/st-patches:Z" \
   --rm \
   -e VERSION="${VERSION}" \
   -e PATCHES="${PATCHES}" \
@@ -18,6 +19,8 @@ docker run \
     tar zxvf st-${VERSION}.tar.gz && \
     cd st-${VERSION} && \
     for p in ${PATCHES}; do wget $p && patch -p1 < ${p##*/} ; done && \
+    for f in /st-patches/*.diff; do patch -p1 < $f ; done && \
     make && \
-    cp st /output_bin_dir/'
+    cp st /output_bin_dir/st_NEW'
 
+echo "Built to ~/bin/st_NEW"

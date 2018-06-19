@@ -1,0 +1,58 @@
+From f3e0377f24c02ca68b1e70af93d943fd91b60fe8 Mon Sep 17 00:00:00 2001
+From: James Eckersall <james.eckersall@gmail.com>
+Date: Tue, 19 Jun 2018 10:00:00 +0100
+Subject: [PATCH] delkey patch
+
+---
+ config.def.h | 5 ++---
+ st.info      | 4 ++--
+ 2 files changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/config.def.h b/config.def.h
+index 82b1b09..e057b0c 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -267,7 +267,7 @@ static Key key[] = {
+ 	{ XK_KP_Delete,     ShiftMask,      "\033[2K",      -1,    0},
+ 	{ XK_KP_Delete,     ShiftMask,      "\033[3;2~",    +1,    0},
+ 	{ XK_KP_Delete,     XK_ANY_MOD,     "\033[P",       -1,    0},
+-	{ XK_KP_Delete,     XK_ANY_MOD,     "\033[3~",      +1,    0},
++	{ XK_KP_Delete,     XK_ANY_MOD,     "\177",         +1,    0},
+ 	{ XK_KP_Multiply,   XK_ANY_MOD,     "\033Oj",       +2,    0},
+ 	{ XK_KP_Add,        XK_ANY_MOD,     "\033Ok",       +2,    0},
+ 	{ XK_KP_Enter,      XK_ANY_MOD,     "\033OM",       +2,    0},
+@@ -335,8 +335,7 @@ static Key key[] = {
+ 	{ XK_Delete,        ShiftMask,      "\033[2K",      -1,    0},
+ 	{ XK_Delete,        ShiftMask,      "\033[3;2~",    +1,    0},
+ 	{ XK_Delete,        XK_ANY_MOD,     "\033[P",       -1,    0},
+-	{ XK_Delete,        XK_ANY_MOD,     "\033[3~",      +1,    0},
+-	{ XK_BackSpace,     XK_NO_MOD,      "\177",          0,    0},
++	{ XK_Delete,        XK_ANY_MOD,     "\177",         +1,    0},
+ 	{ XK_BackSpace,     Mod1Mask,       "\033\177",      0,    0},
+ 	{ XK_Home,          ShiftMask,      "\033[2J",       0,   -1},
+ 	{ XK_Home,          ShiftMask,      "\033[1;2H",     0,   +1},
+diff --git a/st.info b/st.info
+index 52fc617..39362a8 100644
+--- a/st.info
++++ b/st.info
+@@ -54,7 +54,7 @@ st| simpleterm,
+ 	ka3=\E[5~,
+ 	kc1=\E[4~,
+ 	kc3=\E[6~,
+-	kbs=\177,
++	kbs=\010,
+ 	kcbt=\E[Z,
+ 	kb2=\EOu,
+ 	kcub1=\EOD,
+@@ -74,7 +74,7 @@ st| simpleterm,
+ 	kri=\E[1;2A,
+ 	kclr=\E[3;5~,
+ 	kdl1=\E[3;2~,
+-	kdch1=\E[3~,
++	kdch1=\177~,
+ 	kich1=\E[2~,
+ 	kend=\E[4~,
+ 	kf1=\EOP,
+-- 
+2.7.4
+
