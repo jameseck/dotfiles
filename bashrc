@@ -56,7 +56,7 @@ source ~/gittmp/github.com/openshift/origin/contrib/completions/bash/openshift
 export GOROOT=/usr/local/go
 grep -q $GOROOT <<<$PATH || export PATH="$GOROOT/bin:$PATH"
 
-export GOPATH=$HOME/go
+export GOPATH=~/go
 grep -q "$GOPATH" <<<$PATH || export PATH="$GOPATH/bin:$PATH"
 
 alias rppj="ruby -e \"require 'json'; puts (JSON.pretty_generate JSON.parse(STDIN.read))\""
@@ -64,5 +64,23 @@ alias os="openstack"
 
 export ANSIBLE_NOCOWS=1
 
+[ -d "~/.tfenv" ] && export PATH="~/.tfenv/bin:$PATH"
+
 # Add ~/bin to PATH if not already there
-echo $PATH | tr ":" "\n" | grep ^~/bin$ || export PATH="~/bin:$PATH"
+echo $PATH | tr ":" "\n" | grep ^~/bin$ >/dev/null || export PATH="~/bin:$PATH"
+
+[ -f ~/bin/vault ] && complete -C ~/bin/vault vault
+
+function vault_auth() {
+export VAULT_ADDR="https://vault.cbg.five.ai:8200"
+export VAULT_CACERT="/home/james/gittmp/gitlab.corp.five.ai/infra/internal-cas/root-cas/fiveai-bootstrap-root-ca-g1/ca.crt"
+# [ -z "$VAULT_TOKEN" ] || unset VAULT_TOKEN
+vault auth -method=ldap username=james.eckersall password="`pass freeipa`"
+}
+export vault_auth
+
+[ -d ~/mattermost ] && export PATH=$PATH:~/mattermost
+
+
+# if gnome-terminal, switch to alternate screen
+[ "${VTE_VERSION}" == "4205" ] && echo -ne '\e[?47h'
