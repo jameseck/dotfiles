@@ -16,3 +16,7 @@ ln -fvs $DIR/tmux.conf $HOME/.tmux.conf
 ln -fvs $DIR/vim/update_bundles $HOME/.vim/update_bundles
 ln -fvs $DIR/vimrc $HOME/.vimrc
 ln -fvs $DIR/sshrc $HOME/.ssh/rc
+
+mkdir -p ~/bin 2> /dev/null
+
+cp sshck ~/bin/
