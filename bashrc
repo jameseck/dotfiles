@@ -43,6 +43,8 @@ alias copsx2="cops -X2"
 alias copsgex="cops get -e -X1"
 alias ls="ls --color"
 
+alias tm="TERM=tmux tmux"
+
 [ -f ~/cops_completion.sh ] && \
 source ~/cops_completion.sh
 
@@ -64,7 +66,7 @@ alias os="openstack"
 
 export ANSIBLE_NOCOWS=1
 
-[ -d "~/.tfenv" ] && export PATH="~/.tfenv/bin:$PATH"
+[ -d "$HOME/.tfenv" ] && export PATH="~/.tfenv/bin:$PATH"
 
 # Add ~/bin to PATH if not already there
 echo $PATH | tr ":" "\n" | grep ^~/bin$ >/dev/null || export PATH="~/bin:$PATH"
