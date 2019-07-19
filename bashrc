@@ -43,8 +43,9 @@ alias ls="ls --color"
 
 alias tm="TERM=tmux tmux"
 
-export GIT_PS1_SHOWUPSTREAM="auto"
+export GIT_PS1_SHOWUPSTREAM="legacy git"
 export GIT_PS1_SHOWDIRTYSTATE="true"
+export GIT_PS1_SHOWCOLORHINTS="true"
 
 [ -f ~/.git-prompt.sh ] && source ~/.git-prompt.sh
 
