@@ -5,8 +5,6 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-source ~/.git-prompt.sh
-
 parse_oc_cluster_project() {
   oc config current-context | cut -d '/' -f1,2 | sed 's/\:.*//' | sed 's/\// /' | awk '{print $2"/"$1}'
 }
@@ -45,15 +43,20 @@ alias ls="ls --color"
 
 alias tm="TERM=tmux tmux"
 
+export GIT_PS1_SHOWUPSTREAM="auto"
+export GIT_PS1_SHOWDIRTYSTATE="true"
+
+[ -f ~/.git-prompt.sh ] && source ~/.git-prompt.sh
+
 [ -f ~/cops_completion.sh ] && \
 source ~/cops_completion.sh
 
 [ -f ~/gittmp/github.com/openshift/origin/contrib/completions/bash/oadm ] && \
-source ~/gittmp/github.com/openshift/origin/contrib/completions/bash/oadm
+  source ~/gittmp/github.com/openshift/origin/contrib/completions/bash/oadm
 [ -f ~/gittmp/github.com/openshift/origin/contrib/completions/bash/oc ] && \
-source ~/gittmp/github.com/openshift/origin/contrib/completions/bash/oc
+  source ~/gittmp/github.com/openshift/origin/contrib/completions/bash/oc
 [ -f ~/gittmp/github.com/openshift/origin/contrib/completions/bash/openshift ] && \
-source ~/gittmp/github.com/openshift/origin/contrib/completions/bash/openshift
+  source ~/gittmp/github.com/openshift/origin/contrib/completions/bash/openshift
 
 export GOROOT=/usr/local/go
 grep -q $GOROOT <<<$PATH || export PATH="$GOROOT/bin:$PATH"
@@ -73,16 +76,15 @@ echo $PATH | tr ":" "\n" | grep ^~/bin$ >/dev/null || export PATH="~/bin:$PATH"
 
 [ -f ~/bin/vault ] && complete -C ~/bin/vault vault
 
-function vault_auth() {
-export VAULT_ADDR="https://vault.cbg.five.ai:8200"
-export VAULT_CACERT="/home/james/gittmp/gitlab.corp.five.ai/infra/internal-cas/root-cas/fiveai-bootstrap-root-ca-g1/ca.crt"
-# [ -z "$VAULT_TOKEN" ] || unset VAULT_TOKEN
-vault auth -method=ldap username=james.eckersall password="`pass freeipa`"
-}
-export vault_auth
-
-[ -d ~/mattermost ] && export PATH=$PATH:~/mattermost
-
+#function vault_auth() {
+#export VAULT_ADDR="https://vault.cbg.five.ai:8200"
+#export VAULT_CACERT="/home/james/gittmp/gitlab.corp.five.ai/infra/internal-cas/root-cas/fiveai-bootstrap-root-ca-g1/ca.crt"
+## [ -z "$VAULT_TOKEN" ] || unset VAULT_TOKEN
+#vault auth -method=ldap username=james.eckersall password="`pass freeipa`"
+#}
+#export vault_auth
 
 # if gnome-terminal, switch to alternate screen
 [ "${VTE_VERSION}" == "4205" ] && echo -ne '\e[?47h'
+
+export DEVTOOLS=/home/james/hgtmp/core/devTools
